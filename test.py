@@ -3,7 +3,6 @@
 # import re
 import pandas as pd
 import ast
-import os
 
 data = pd.read_csv("msg_with_label_and_regexResults")
 # print(ast.literal_eval(df.iloc[0]["label"])[0]["labels"][0])
@@ -102,9 +101,7 @@ for objection in objections:
                 if found == 0:
                     TN += 1
                     
-if not os.path.exists("./outputs/"):
-        os.makedirs("./outputs/")
                     
-with open('./outputs/metrics.txt', 'w') as outfile:
+with open('metrics.txt', 'w') as outfile:
     outfile.write(f"\nPrecision: {total_precison}, Recall: {total_recall} and F1 Score: {f1_score}.")
     outfile.write(f"TP: {TP}, FP: {FP}, TN: {TN}, FN: {FN}.")
