@@ -24,7 +24,7 @@ jobs:
           sudo python test.py
 
           echo "## Model Metrics" > report.md
-          cat ./outputs/metrics.txt >> report.md
+          cat metrics.txt >> report.md
 
           cml-send-comment report.md
         
