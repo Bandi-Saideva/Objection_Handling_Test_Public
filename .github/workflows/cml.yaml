@@ -1,0 +1,34 @@
+name: objection_handling_test
+on: 
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: iterative/setup-cml@v1
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: cml for Objection Handling
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          sudo pip3 install -r requirements.txt
+          sudo python test.py
+
+          echo "## Model Metrics" > report.md
+          cat ./outputs/metrics.txt >> report.md
+
+          cml-send-comment report.md
+          
+          echo "## Add [skip ci] in commit message on pr to prevent a second action to be triggered."
+          cml-pr training/outputs/* 
+        
+
