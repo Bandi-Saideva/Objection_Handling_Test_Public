@@ -28,4 +28,6 @@ jobs:
 
           cml-send-comment report.md
         
+          cml-pr metrics.txt
+        
 
