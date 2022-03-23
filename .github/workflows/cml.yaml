@@ -28,6 +28,11 @@ jobs:
 
           cml-send-comment report.md
         
-          cml-pr metrics.txt
+          git config --local user.email "bandi.s@outplayhq.com"
+          git config --local user.name "Bandi Saideva"
+
+          git add metrics.txt
+          git commit --message "Added metrics.txt"
+          git push
         
 
