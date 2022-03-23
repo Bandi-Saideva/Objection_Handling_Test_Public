@@ -33,6 +33,6 @@ jobs:
 
           git add metrics.txt
           git commit --message "Added metrics.txt"
-          git push
+          git push origin dummy
         
 
